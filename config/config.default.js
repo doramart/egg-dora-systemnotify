@@ -57,8 +57,7 @@ exports.doraSystemNotify = {
     initData: '', // 初始化数据脚本
     pluginsConfig: ` 
     exports.doraSystemNotify = {\n
-        enable: true,\n
-        \n
+        enable: true,\n        package: 'egg-dora-systemnotify',
     };\n
     `, // 插入到 plugins.js 中的配置
     defaultConfig: `
