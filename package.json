@@ -1,6 +1,6 @@
 {
   "name": "egg-dora-systemnotify",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "systemNotify",
   "eggPlugin": {
     "name": "doraSystemNotify"
@@ -16,7 +16,7 @@
     "lodash": "^4.17.15",
     "xss": "^1.0.6",
     "egg-dora-reguser": "^1.0.0",
-    "egg-dora-annouce": "^1.0.0"
+    "egg-dora-announce": "^1.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -54,7 +54,7 @@
     "url": "git+https://github.com/doramart/egg-dora-systemnotify.git"
   },
   "bugs": {
-    "url": "https://github.com/doramart/egg/issues"
+    "url": "https://github.com/doramart/egg-dora-systemnotify/issues"
   },
   "homepage": "https://github.com/doramart/egg-dora-systemnotify#readme",
   "author": "doramart",
