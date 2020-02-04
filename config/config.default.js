@@ -17,7 +17,7 @@ exports.doraSystemNotify = {
     isindex: 0, // 是否需要前台访问，1：需要，0：不需要,入口地址:'/ext/devteam/index/index'
     version: pkgInfo.version, // 版本号
     iconName: 'icon_system_notic', // 主菜单图标名称
-    adminUrl: 'https://cdn.html-js.cn/cms/plugins/static/admin/systemNotify/js/app.js',
+    adminUrl: '/systemNotify/js/app.js',
     adminApi: [{
         url: 'systemNotify/getList',
         method: 'get',
@@ -57,8 +57,7 @@ exports.doraSystemNotify = {
     initData: '', // 初始化数据脚本
     pluginsConfig: ` 
     exports.doraSystemNotify = {\n
-        enable: true,\n
-        \n
+        enable: true,\n        package: 'egg-dora-systemnotify',
     };\n
     `, // 插入到 plugins.js 中的配置
     defaultConfig: `
