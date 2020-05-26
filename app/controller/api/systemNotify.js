@@ -2,6 +2,42 @@ const _ = require('lodash');
 
 let SystemNotifyController = {
 
+
+    /**
+     * @api {get} /api/systemNotify/getUserNotifys 获取系统公告
+     * @apiDescription 获取系统公告，带分页，需要登录态
+     * @apiName /systemNotify/getUserNotifys
+     * @apiGroup SystemNotify
+     * @apiParam {string} current 当前页码
+     * @apiParam {string} pageSize 每页记录数
+     * @apiParam {string} token 登录时返回的参数鉴权
+     * @apiSuccess {json} result
+     * @apiSuccessExample {json} Success-Response:
+     *{
+     *    "status": 200,
+     *    "message": "操作成功 userNotify",
+     *    "server_time": 1542530587287,
+     *    "data": [
+     *        {
+     *            "_id": "myh0RzkV3H",
+     *            "user": "zwwdJvLmP",
+     *            "notify": {
+     *               "_id": "5mCBWXS-B",
+     *               "title": "这是一条私信，不要偷偷打开哟。。。",
+     *               "content": "<p>这是一条私信，不要偷偷打开哟。。。</p>",
+     *               "date": "2018-11-18 16:43:07",
+     *               "id": "5mCBWXS-B"
+     *            },
+     *            "__v": 0,
+     *            "date": "2018-11-18 16:13:47",
+     *            "isRead": false,
+     *            "id": "myh0RzkV3H"
+     *       }
+     *    ]
+     *}
+     * @apiSampleRequest http://localhost:8080/api/systemNotify/getUserNotifys
+     * @apiVersion 1.0.0
+     */
     async getUserNotifys(ctx, app) {
 
         try {
@@ -67,6 +103,25 @@ let SystemNotifyController = {
     },
 
 
+
+    /**
+     * @api {get} /api/systemNotify/setNoticeRead 设置系统公告为已读
+     * @apiDescription 设置系统公告为已读
+     * @apiName /systemNotify/setNoticeRead
+     * @apiGroup SystemNotify
+     * @apiParam {string} ids 消息id,多个id用逗号隔开,全部传 all
+     * @apiParam {string} token 登录时返回的参数鉴权
+     * @apiSuccess {json} result
+     * @apiSuccessExample {json} Success-Response:
+     *{
+     *    "status": 200,
+     *    "message": "设置已读成功",
+     *    "server_time": 1542529985218,
+     *    "data": {}
+     *}
+     * @apiSampleRequest http://localhost:8080/api/systemNotify/setNoticeRead
+     * @apiVersion 1.0.0
+     */
     async setMessageHasRead(ctx, app) {
 
 
@@ -85,14 +140,6 @@ let SystemNotifyController = {
             if (targetIds == 'all') {
                 queryObj.isRead = true;
             } else {
-                if (!checkCurrentId(targetIds)) {
-                    errMsg = ctx.__("validate_error_params");
-                } else {
-                    targetIds = targetIds.split(',');
-                }
-                if (errMsg) {
-                    throw new Error(errMsg);
-                }
                 queryObj['_id'] = {
                     $in: targetIds
                 };
